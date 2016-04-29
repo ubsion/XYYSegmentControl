@@ -43,7 +43,7 @@ typedef enum {
     
     NSMutableArray                                      *_viewArray;                            //主视图的子视图数组
     
-    __weak         id<XYYSegmentControlDelegate>        _segmentControlDelegate;
+//    __weak         id<XYYSegmentControlDelegate>        _segmentControlDelegate;
     UIViewController                                     *_segmentController;
     
 }
