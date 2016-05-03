@@ -5,3 +5,7 @@
 
 
 
+ pod 'XYYSegmentControl', '~> 0.0.1'
+
+
+
