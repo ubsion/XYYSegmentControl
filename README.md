@@ -41,6 +41,42 @@ self.slideSwitchView.tabSelectionIndicatorLocation = XYYSegmentedControlSelectio
 
 [self.view addSubview:self.slideSwitchView];
 
+
+///---XYYSegmentControldelegate---
+
+-(NSUInteger)numberOfTab:(XYYSegmentControl *)view
+
+{
+   
+    return [self.itemArray count];//items决定
+
+}
+
+///待加载的控制器
+
+-(UIViewController *)slideSwitchView:(XYYSegmentControl *)view viewOfTab:(NSUInteger)number
+{
+  
+    RootViewController *root = [[RootViewController alloc] init];
+  
+    root.title = _itemArray[number];
+   
+    return root;
+
+}
+
+-(void)slideSwitchView:(XYYSegmentControl *)view didselectTab:(NSUInteger)number
+
+{
+   
+    RootViewController *root = view.viewArray[number];
+   
+    [root rootLoadData:number];
+
+}
+
+
+
 ## pod 使用
 pod 'XYYSegmentControl', '~> 0.0.1'
 
