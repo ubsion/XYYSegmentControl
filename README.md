@@ -1,8 +1,8 @@
 # XYYSegmentDemo
 ##多页签显示，基于HMSegmentedControl再封装
-
+正常显示:
 ![image](https://github.com/1273011249/XYYSegmentControl/blob/master/SegmentDemo_gif.gif)
-
+被选中字体变大显示:
 ![image](https://github.com/1273011249/XYYSegmentControl/blob/master/SegmentDemo_add.gif)
 
 ##使用方法：
