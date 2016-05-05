@@ -59,7 +59,8 @@
          增加了选中字体放大效果;
 
 ## pod 使用
-pod 'XYYSegmentControl', '~> 0.0.1'
+~~pod 'XYYSegmentControl', '~> 0.0.1'~~
 
+pod 'XYYSegmentControl', '~> 1.2.0'
 
 
