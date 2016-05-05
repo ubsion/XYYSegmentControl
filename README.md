@@ -3,6 +3,8 @@
 
 ![image](https://github.com/1273011249/XYYSegmentControl/blob/master/SegmentDemo_gif.gif)
 
+![image](https://github.com/1273011249/XYYSegmentControl/blob/master/SegmentDemo_add.gif)
+
 ##使用方法：
 
     self.itemArray = @[@"首页",@"游戏",@"娱乐",@"新闻",@"游戏",@"网页游戏",@"段子",@"科技"];
