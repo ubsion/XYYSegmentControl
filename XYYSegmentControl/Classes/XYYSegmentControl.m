@@ -72,6 +72,7 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
 
 -(void)setTabItemSelectedColor:(UIColor *)tabItemSelectedColor
 {
+    _tabItemSelectedColor = tabItemSelectedColor;
     self.hmSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : tabItemSelectedColor};//@{NSForegroundColorAttributeName : [UIColor orangeColor]};
 }
 
@@ -127,6 +128,18 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
         self.hmSegmentedControl.titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize]};
     }
 }
+
+-(void)setTabItemSelectedFont:(CGFloat)fontSize
+{
+    if (_tabItemSelectedColor) {
+        //设置了tab颜色
+        self.hmSegmentedControl.selectedTitleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName : _tabItemSelectedColor};
+    }else
+    {
+        self.hmSegmentedControl.selectedTitleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize]};
+    }
+}
+
 
 /**
  *创建标签页

@@ -39,7 +39,8 @@ typedef enum {
     UIColor                                             *_tabItemSelectionIndicatorColor;       //tab被选中横线\box 颜色
     
     CGFloat                                             _tabItemNormalFont;                     //tab字体大小
-    
+    CGFloat                                             tabItemSelectedFont;                    //被选中字体大小
+
     XYYSegmentedControlSelectionStyle                   _tabSelectionStyle;                      //tab被选中 box 风格
     XYYSegmentedControlSelectionIndicatorLocation       _tabSelectionIndicatorLocation;          //tab被选中 box 风格位置
     
@@ -61,6 +62,7 @@ typedef enum {
 @property (nonatomic, strong)  UIColor                                          *tabItemNormalBackgroundColor;
 @property (nonatomic, strong)  UIColor                                          *tabItemSelectionIndicatorColor;
 @property (nonatomic, assign)  CGFloat                                          tabItemNormalFont;
+@property (nonatomic, assign)  CGFloat                                          tabItemSelectedFont;
 
 
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionStyle                tabSelectionStyle;

@@ -46,7 +46,9 @@
     //设置tab 被选中的标识的颜色(可选)
     self.slideSwitchView.tabItemSelectionIndicatorColor = [UIColor orangeColor];
     //设置tab字体大小(可选)
-//    self.slideSwitchView.tabItemNormalFont  = 30;
+    self.slideSwitchView.tabItemNormalFont  = 20;
+    //被选中字体大小 (可选)
+    self.slideSwitchView.tabItemSelectedFont = 25;
     //设置tab 被选中标识的风格
     self.slideSwitchView.tabSelectionStyle = XYYSegmentedControlSelectionStyleFullWidthStripe;
     //设置tab 被选中标识的位置
