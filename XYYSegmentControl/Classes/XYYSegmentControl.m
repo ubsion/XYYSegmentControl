@@ -66,6 +66,7 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
 
 -(void)setTabItemNormalColor:(UIColor *)tabItemNormalColor
 {
+    _tabItemNormalColor = tabItemNormalColor;
     self.hmSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : tabItemNormalColor} ;//@{NSForegroundColorAttributeName : [UIColor whiteColor]};
 }
 
@@ -114,6 +115,17 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
         
     }
     self.hmSegmentedControl.selectionIndicatorLocation = selectionIndicatorLocation;
+}
+
+-(void)setTabItemNormalFont:(CGFloat)fontSize
+{
+    if (_tabItemNormalColor) {
+        //设置了tab颜色
+        self.hmSegmentedControl.titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName : _tabItemNormalColor};
+    }else
+    {
+        self.hmSegmentedControl.titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize]};
+    }
 }
 
 /**

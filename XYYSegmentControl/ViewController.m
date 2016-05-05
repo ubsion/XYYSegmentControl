@@ -37,14 +37,16 @@
     [self.slideSwitchView setUserInteractionEnabled:YES];
     //XYYSegmentControl代理
     self.slideSwitchView.segmentControlDelegate = self;
-    //设置tab 颜色
+    //设置tab 颜色(可选)
     self.slideSwitchView.tabItemNormalColor = [UIColor blueColor];
-    //设置tab 被选中的颜色
+    //设置tab 被选中的颜色(可选)
     self.slideSwitchView.tabItemSelectedColor = [UIColor redColor];
-    //设置tab 背景颜色
+    //设置tab 背景颜色(可选)
     self.slideSwitchView.tabItemNormalBackgroundColor = [UIColor lightGrayColor];
-    //设置tab 被选中的标识的颜色
+    //设置tab 被选中的标识的颜色(可选)
     self.slideSwitchView.tabItemSelectionIndicatorColor = [UIColor orangeColor];
+    //设置tab字体大小(可选)
+//    self.slideSwitchView.tabItemNormalFont  = 30;
     //设置tab 被选中标识的风格
     self.slideSwitchView.tabSelectionStyle = XYYSegmentedControlSelectionStyleFullWidthStripe;
     //设置tab 被选中标识的位置

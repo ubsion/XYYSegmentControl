@@ -38,6 +38,8 @@ typedef enum {
     UIColor                                             *_tabItemNormalBackgroundColor;         //tab背景颜色
     UIColor                                             *_tabItemSelectionIndicatorColor;       //tab被选中横线\box 颜色
     
+    CGFloat                                             _tabItemNormalFont;                     //tab字体大小
+    
     XYYSegmentedControlSelectionStyle                   _tabSelectionStyle;                      //tab被选中 box 风格
     XYYSegmentedControlSelectionIndicatorLocation       _tabSelectionIndicatorLocation;          //tab被选中 box 风格位置
     
@@ -48,8 +50,7 @@ typedef enum {
     
 }
 @property (nonatomic, weak)   id<XYYSegmentControlDelegate>                     segmentControlDelegate;
-///分布式主控制器,不设置无法跳转到下个页面
-//@property (nonatomic, strong)  UIViewController                                 *segmentController;
+
 @property (nonatomic, strong)  UIScrollView                                     *topScrollView;
 @property (nonatomic, strong)  UIScrollView                                     *rootScrollView;
 @property (nonatomic, assign)  CGFloat                                          userContentOffsetX;
@@ -59,6 +60,8 @@ typedef enum {
 @property (nonatomic, strong)  UIColor                                          *tabItemSelectedColor;
 @property (nonatomic, strong)  UIColor                                          *tabItemNormalBackgroundColor;
 @property (nonatomic, strong)  UIColor                                          *tabItemSelectionIndicatorColor;
+@property (nonatomic, assign)  CGFloat                                          tabItemNormalFont;
+
 
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionStyle                tabSelectionStyle;
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionIndicatorLocation    tabSelectionIndicatorLocation;
