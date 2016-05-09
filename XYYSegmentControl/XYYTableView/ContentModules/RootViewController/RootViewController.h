@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  SegmentDemo
 //
 //  Created by xuyong on 16/4/27.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface RootViewController : UIViewController
+-(void)rootLoadData:(NSInteger)index;
 @end
-

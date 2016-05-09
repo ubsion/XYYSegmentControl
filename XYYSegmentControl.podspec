@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
  
 
   s.name         = "XYYSegmentControl"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "SegmentControl of XYYSegmentControl for develop"
 
   s.description  = <<-DESC
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
 
 
-  s.source       = { :git => "https://github.com/1273011249/XYYSegmentControl.git", :tag => "1.2.0" }
+  s.source       = { :git => "https://github.com/1273011249/XYYSegmentControl.git", :tag => "1.3.0" }
 
 
   s.source_files  = "Classes", "XYYSegmentControl/Classes/*.{h,m}"

@@ -10,10 +10,13 @@
 #import "HMSegmentedControl.h"
 
 static const CGFloat kHeightOfTopScrollView = 44.0f;
+static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
 
 @interface XYYSegmentControl()
-
 @property (nonatomic, strong) HMSegmentedControl *hmSegmentedControl;
+
+@property (nonatomic,strong) NSArray *sectionImages;
+@property (nonatomic,strong) NSArray *sectionSelectedImages;
 
 @end
 
@@ -41,10 +44,32 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame sectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages source:(UIViewController *)srcController
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.viewArray       = [[NSMutableArray alloc] init];
+        self.sectionImages   = [sectionImages copy];
+        self.sectionSelectedImages = [sectionSelectedImages copy];
+        _segmentController = srcController;
+        [self initImagesValues];
+    }
+    return self;
+}
+
+///初始化
 - (void)initValues
 {
     [self createTopView];//创建分布式
     [self createRootView];
+    _isBuildUI = NO;
+}
+
+///初始化图片
+- (void)initImagesValues
+{
+    [self createImageTopView];//创建分布式
+    [self createImagesRootView];
     _isBuildUI = NO;
 }
 
@@ -140,7 +165,25 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
     }
 }
 
+-(void)setVerticalDividerEnabled:(BOOL)verticalDividerEnabled
+{
+    self.hmSegmentedControl.verticalDividerEnabled = verticalDividerEnabled;
+    if (verticalDividerEnabled) {
+        self.hmSegmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    }
+}
 
+-(void)setVerticalDividerColor:(UIColor *)verticalDividerColor
+{
+    self.hmSegmentedControl.verticalDividerColor = verticalDividerColor;
+}
+
+-(void)setVerticalDividerWidth:(CGFloat)verticalDividerWidth
+{
+    self.hmSegmentedControl.verticalDividerWidth = verticalDividerWidth;
+}
+
+#pragma mark - views
 /**
  *创建标签页
  */
@@ -148,15 +191,16 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
 {
     CGFloat viewWidth = CGRectGetWidth(self.frame);
     self.hmSegmentedControl = [[HMSegmentedControl alloc] initWithFrame:CGRectMake(0, 0, viewWidth, kHeightOfTopScrollView)];
+//    self.hmSegmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     self.hmSegmentedControl.sectionTitles = _channelName;
     self.hmSegmentedControl.selectedSegmentIndex = 0;
     //默认colors
-    self.hmSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
-    self.hmSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.hmSegmentedControl.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
-    self.hmSegmentedControl.selectionIndicatorColor = [UIColor blueColor];
+    self.hmSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor redColor]};
+    self.hmSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+    self.hmSegmentedControl.backgroundColor = [UIColor whiteColor];
+    self.hmSegmentedControl.selectionIndicatorColor = [UIColor redColor];
     //默认style
-    self.hmSegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+    self.hmSegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
     self.hmSegmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     
     [self addSubview:self.hmSegmentedControl];
@@ -174,6 +218,62 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
 {
     //创建主滚动视图
     _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kHeightOfTopScrollView , self.bounds.size.width, self.bounds.size.height - kHeightOfTopScrollView)];
+    _rootScrollView.delegate = self;
+    _rootScrollView.pagingEnabled = YES;
+    _rootScrollView.userInteractionEnabled = YES;
+    _rootScrollView.bounces = NO;
+    _rootScrollView.showsHorizontalScrollIndicator = NO;
+    _rootScrollView.showsVerticalScrollIndicator = NO;
+    _rootScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    [self addSubview:_rootScrollView];
+}
+
+/**
+ *创建带有图片的标签页
+ */
+-(void)createImageTopView
+{
+    CGFloat viewWidth = CGRectGetWidth(self.frame);
+    NSMutableArray *sectionImagesArray = [[NSMutableArray alloc] init];
+    [self.sectionImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [sectionImagesArray addObject:[UIImage imageNamed:self.sectionImages[idx]]];
+    }];
+    NSMutableArray *sectionSelectedImagesArray = [[NSMutableArray alloc] init];
+    [self.sectionSelectedImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [sectionSelectedImagesArray addObject:[UIImage imageNamed:self.sectionSelectedImages[idx]]];
+    }];
+    
+    // Segmented control with images
+    self.hmSegmentedControl  = [[HMSegmentedControl alloc] initWithSectionImages:sectionImagesArray
+                                                           sectionSelectedImages:sectionSelectedImagesArray];
+    self.hmSegmentedControl.frame = CGRectMake(0, 0, viewWidth, kImagesHeightOfTopScrollView);
+//    self.hmSegmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    self.hmSegmentedControl.sectionTitles = _channelName;
+    self.hmSegmentedControl.selectedSegmentIndex = 0;
+    //默认colors
+    self.hmSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor redColor]};
+    self.hmSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+    self.hmSegmentedControl.backgroundColor = [UIColor whiteColor];
+    self.hmSegmentedControl.selectionIndicatorColor = [UIColor redColor];
+    //默认style
+    self.hmSegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
+    self.hmSegmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    
+    [self addSubview:self.hmSegmentedControl];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.hmSegmentedControl setIndexChangeBlock:^(NSInteger index) {
+        [weakSelf segmentClicked:index];
+    }];
+}
+
+/**
+ *创建带有图片的根视图
+ */
+-(void)createImagesRootView
+{
+    //创建主滚动视图
+    _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kImagesHeightOfTopScrollView , self.bounds.size.width, self.bounds.size.height - kImagesHeightOfTopScrollView)];
     _rootScrollView.delegate = self;
     _rootScrollView.pagingEnabled = YES;
     _rootScrollView.userInteractionEnabled = YES;
@@ -291,8 +391,8 @@ static const CGFloat kHeightOfTopScrollView = 44.0f;
     if (scrollView == _rootScrollView) {
         //调整顶部滑条按钮状态
         int index = (int)scrollView.contentOffset.x/self.bounds.size.width ;
-        [self segmentClicked:index];
         [self.hmSegmentedControl setSelectedSegmentIndex:index animated:YES];
+        [self segmentClicked:index];
     }
 }
 

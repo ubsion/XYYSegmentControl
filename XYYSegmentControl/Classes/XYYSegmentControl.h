@@ -39,14 +39,17 @@ typedef enum {
     UIColor                                             *_tabItemSelectionIndicatorColor;       //tab被选中横线\box 颜色
     
     CGFloat                                             _tabItemNormalFont;                     //tab字体大小
-    CGFloat                                             tabItemSelectedFont;                    //被选中字体大小
+    CGFloat                                             _tabItemSelectedFont;                   //被选中字体大小
+    
+    BOOL                                                _verticalDividerEnabled;                //是否有垂直分界线
+    UIColor                                             *_verticalDividerColor;                  //垂直分界线颜色
+    CGFloat                                             _verticalDividerWidth;                  //垂直分界线宽度
 
     XYYSegmentedControlSelectionStyle                   _tabSelectionStyle;                      //tab被选中 box 风格
     XYYSegmentedControlSelectionIndicatorLocation       _tabSelectionIndicatorLocation;          //tab被选中 box 风格位置
     
     NSMutableArray                                      *_viewArray;                            //主视图的子视图数组
     
-//    __weak         id<XYYSegmentControlDelegate>        _segmentControlDelegate;
     UIViewController                                     *_segmentController;
     
 }
@@ -61,9 +64,13 @@ typedef enum {
 @property (nonatomic, strong)  UIColor                                          *tabItemSelectedColor;
 @property (nonatomic, strong)  UIColor                                          *tabItemNormalBackgroundColor;
 @property (nonatomic, strong)  UIColor                                          *tabItemSelectionIndicatorColor;
+
 @property (nonatomic, assign)  CGFloat                                          tabItemNormalFont;
 @property (nonatomic, assign)  CGFloat                                          tabItemSelectedFont;
 
+@property (nonatomic, assign)  BOOL                                             verticalDividerEnabled;
+@property (nonatomic, strong)  UIColor                                          *verticalDividerColor;
+@property (nonatomic, assign)  CGFloat                                          verticalDividerWidth;
 
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionStyle                tabSelectionStyle;
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionIndicatorLocation    tabSelectionIndicatorLocation;
@@ -90,7 +97,7 @@ typedef enum {
  *
  *  @param index 依次是当前的segmentBar
  */
--(void)changeSlideAtSegmentIndex:(NSInteger)index;
+- (void)changeSlideAtSegmentIndex:(NSInteger)index;
 
 /**
  *  @author XuYong, 15-05-18 14:05:33
@@ -103,6 +110,19 @@ typedef enum {
  *  @return 实例化
  */
 - (id)initWithFrame:(CGRect)frame channelName:(NSArray *)channel source:(UIViewController *)srcController;
+
+/**
+ *  @author XuYong
+ *
+ *  初始化
+ *
+ *  @param frame
+ *  @param sectionImages         图片
+ *  @param sectionSelectedImages 被选中的图片
+ *  @return 实例化
+ */
+- (id)initWithFrame:(CGRect)frame sectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages source:(UIViewController *)srcController;
+
 @end
 
 
