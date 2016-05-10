@@ -1,4 +1,4 @@
-# XYYSegmentDemo
+# XYYSegmentDemo（1.3.0）
 ##多页签显示，基于HMSegmentedControl再封装
 最新demo：
 
