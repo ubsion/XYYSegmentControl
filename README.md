@@ -50,7 +50,7 @@
     {
          RootViewController *root = [[RootViewController alloc] init];
          root.title = _itemArray[number];
-        return root;
+         return root;
     }
 
     -(void)slideSwitchView:(XYYSegmentControl *)view didselectTab:(NSUInteger)number
