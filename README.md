@@ -81,18 +81,20 @@
  ~~1.2.0 ：增加了可以调节字体大小；
          增加了选中字体放大效果;~~
          
- 1.3.0 ：
- 
+ ~~1.3.0 ：
  优化架构；
-        
  增加了新的功能;
-         
- 增加了6个demo例子;
+ 增加了6个demo例子;~~
+    
+    1.3.1：
+    修正了控制器无法dealloc
+    修正无法捕获点击事件
 
 ## pod 使用
 ~~pod 'XYYSegmentControl', '~> 0.0.1'~~
 
 ~~pod 'XYYSegmentControl', '~> 1.2.0'~~
 
-pod 'XYYSegmentControl', '~> 1.3.0'
+~~pod 'XYYSegmentControl', '~> 1.3.0'~~
 
+pod 'XYYSegmentControl', '~> 1.3.1'
