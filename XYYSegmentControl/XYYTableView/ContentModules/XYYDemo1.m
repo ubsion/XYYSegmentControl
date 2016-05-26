@@ -17,6 +17,12 @@
 @end
 
 @implementation XYYDemo1
+
+-(void)dealloc
+{
+    NSLog(@"XYYDemo1 dealloc-----");
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -28,7 +34,7 @@
 -(void)buildSegment
 {
     self.itemArray = @[@"首页",@"游戏",@"娱乐",@"新闻",@"游戏",@"网页游戏",@"段子",@"科技"];
-    self.slideSwitchView = [[XYYSegmentControl alloc]initWithFrame:CGRectMake(0 , 64 , self.view.frame.size.width, self.view.frame.size.height - 64) channelName:_itemArray source:self];
+    self.slideSwitchView = [[XYYSegmentControl alloc]initWithFrame:CGRectMake(0 , 64 , self.view.frame.size.width, self.view.frame.size.height - 64) channelName:_itemArray source:nil];
     [self.slideSwitchView setUserInteractionEnabled:YES];
     //XYYSegmentControl代理
     self.slideSwitchView.segmentControlDelegate = self;
@@ -53,6 +59,7 @@
 -(UIViewController *)slideSwitchView:(XYYSegmentControl *)view viewOfTab:(NSUInteger)number
 {
     RootViewController *root = [[RootViewController alloc] init];
+    [self addChildViewController:root];
     root.title = _itemArray[number];
     return root;
 }

@@ -17,6 +17,10 @@
 @end
 
 @implementation XYYDemo2
+-(void)dealloc
+{
+    NSLog(@"XYYDemo2 dealloc-----");
+}
 
 -(void)viewDidLoad
 {
@@ -66,6 +70,7 @@
 -(UIViewController *)slideSwitchView:(XYYSegmentControl *)view viewOfTab:(NSUInteger)number
 {
     RootViewController *root = [[RootViewController alloc] init];
+    [self addChildViewController:root];
     root.title = _itemArray[number];
     return root;
 }

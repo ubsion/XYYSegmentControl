@@ -9,15 +9,24 @@
 #import "RootViewController.h"
 
 @interface RootViewController ()
-@property (nonatomic,strong) UILabel *contentLabel;
+
+@property (nonatomic,strong) UILabel  *contentLabel;
+@property (nonatomic,strong) UIButton *skipButton;
 
 @end
 
 @implementation RootViewController
 
+-(void)dealloc
+{
+    NSLog(@"RootViewController dealloc--");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.contentLabel];
+    [self.view addSubview:self.skipButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +58,23 @@
         _contentLabel.font = [UIFont systemFontOfSize:24];
     }
     return _contentLabel;
+}
+
+-(UIButton *)skipButton
+{
+    if (!_skipButton) {
+        _skipButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 300, 400, 100)];
+        [_skipButton setTitle:@"点我跳转" forState:UIControlStateNormal];
+        [_skipButton addTarget:self action:@selector(skipButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _skipButton;
+}
+
+-(void)skipButtonClick:(UIButton *)button
+{
+    RootViewController *nextview = [[RootViewController alloc] init];
+    nextview.title = @"nextview";
+    [self.navigationController pushViewController:nextview animated:YES];
 }
 
 /*

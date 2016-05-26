@@ -32,18 +32,40 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
     return self;
 }
 
+/**
+ *  @author XuYong
+ *
+ *  初始化
+ *
+ *  @param frame   框架
+ *  @param channel 平台数组
+ *  @parm  srcController 传不传都无所谓，为了不使用户更新库修改代码，暂且保留该字段。
+ *  @return 实例化
+ */
 - (id)initWithFrame:(CGRect)frame channelName:(NSArray *)channel source:(UIViewController *)srcController
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.viewArray       = [[NSMutableArray alloc] init];
         self.channelName     = [channel copy];
-        _segmentController = srcController;
+        //_segmentController 不建议使用
+//        _segmentController = srcController;
         [self initValues];
     }
     return self;
 }
 
+/**
+ *  @author XuYong
+ *
+ *  初始化
+ *
+ *  @param frame   框架
+ *  @param sectionImages 图片数组
+ *  @param sectionSelectedImages 被选中的图片数组
+ *  @parm  srcController 传不传都无所谓，为了不使用户更新库修改代码，暂且保留该字段。
+ *  @return 实例化
+ */
 - (id)initWithFrame:(CGRect)frame sectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages source:(UIViewController *)srcController
 {
     self = [super initWithFrame:frame];
@@ -51,7 +73,8 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
         self.viewArray       = [[NSMutableArray alloc] init];
         self.sectionImages   = [sectionImages copy];
         self.sectionSelectedImages = [sectionSelectedImages copy];
-        _segmentController = srcController;
+        //_segmentController 不建议使用
+//        _segmentController = srcController;
         [self initImagesValues];
     }
     return self;
@@ -313,7 +336,6 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
         UIViewController *vc = [self.segmentControlDelegate slideSwitchView:self viewOfTab:i];
         [_viewArray addObject:vc];
         [_rootScrollView addSubview:vc.view];
-        [_segmentController addChildViewController:vc];//增加子控制器
     }
     _isBuildUI = YES;
     //选中第一个view
@@ -323,8 +345,6 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
     //创建完子视图UI才需要调整布局
     [self setNeedsLayout];
 }
-
-
 
 //当横竖屏切换时可通过此方法调整布局
 - (void)layoutSubviews

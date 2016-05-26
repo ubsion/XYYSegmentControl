@@ -18,6 +18,12 @@
 @end
 
 @implementation XYYDemo3
+
+-(void)dealloc
+{
+    NSLog(@"XYYDemo3 dealloc-----");
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,6 +69,7 @@
 {
     RootViewController *root = [[RootViewController alloc] init];
     root.title = _itemArray[number];
+    [self addChildViewController:root];
     return root;
 }
 
