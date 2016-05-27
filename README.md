@@ -49,7 +49,6 @@
     -(UIViewController *)slideSwitchView:(XYYSegmentControl *)view viewOfTab:(NSUInteger)number
     {
          RootViewController *root = [[RootViewController alloc] init];
-         [self addChildViewController:root];
          root.title = _itemArray[number];
          return root;
     }
@@ -87,9 +86,13 @@
  增加了新的功能;
  增加了6个demo例子;~~
     
-    1.3.1：
+~~1.3.1：
     修正了控制器无法dealloc
-    修正无法捕获点击事件
+    修正无法捕获点击事件~~
+    
+    1.3.2：
+    接1.3.1临时整改方案，更新了内存方案使其正常工作，1.3.1之前集成的版本不需要修改代码，更新下库就行了。
+    
 
 ## pod 使用
 ~~pod 'XYYSegmentControl', '~> 0.0.1'~~
