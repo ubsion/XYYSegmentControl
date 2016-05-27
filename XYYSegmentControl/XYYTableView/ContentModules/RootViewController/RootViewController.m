@@ -65,6 +65,7 @@
     if (!_skipButton) {
         _skipButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 300, 400, 100)];
         [_skipButton setTitle:@"点我跳转" forState:UIControlStateNormal];
+        [_skipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_skipButton addTarget:self action:@selector(skipButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _skipButton;

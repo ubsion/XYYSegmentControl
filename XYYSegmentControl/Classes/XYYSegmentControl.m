@@ -48,8 +48,7 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
     if (self) {
         self.viewArray       = [[NSMutableArray alloc] init];
         self.channelName     = [channel copy];
-        //_segmentController 不建议使用
-//        _segmentController = srcController;
+        self.segmentController = srcController;
         [self initValues];
     }
     return self;
@@ -336,6 +335,7 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
         UIViewController *vc = [self.segmentControlDelegate slideSwitchView:self viewOfTab:i];
         [_viewArray addObject:vc];
         [_rootScrollView addSubview:vc.view];
+        [self.segmentController addChildViewController:vc];
     }
     _isBuildUI = YES;
     //选中第一个view

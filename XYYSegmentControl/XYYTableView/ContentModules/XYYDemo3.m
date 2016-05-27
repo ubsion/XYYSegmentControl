@@ -69,7 +69,6 @@
 {
     RootViewController *root = [[RootViewController alloc] init];
     root.title = _itemArray[number];
-    [self addChildViewController:root];
     return root;
 }
 

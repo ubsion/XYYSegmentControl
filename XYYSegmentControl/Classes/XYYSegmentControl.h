@@ -75,10 +75,11 @@ typedef enum {
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionStyle                tabSelectionStyle;
 @property (nonatomic ,assign)  XYYSegmentedControlSelectionIndicatorLocation    tabSelectionIndicatorLocation;
 
-@property (nonatomic, strong)  NSMutableArray           *viewArray;
+@property (nonatomic, strong)  NSMutableArray                                   *viewArray;
 
-@property (nonatomic, strong)  NSMutableArray           *channelName; //存放频道名称
+@property (nonatomic, strong)  NSMutableArray                                   *channelName; //存放频道名称
 
+@property (nonatomic, weak )   UIViewController                                 *segmentController;
 
 
 /*!
