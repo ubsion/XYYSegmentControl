@@ -125,7 +125,7 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
 
 -(void)setTabSelectionStyle:(XYYSegmentedControlSelectionStyle)tabSelectionStyle
 {
-    HMSegmentedControlSelectionStyle HMSelectionStyle;
+    HMSegmentedControlSelectionStyle HMSelectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
     if (tabSelectionStyle == HMSegmentedControlSelectionStyleTextWidthStripe)
     {
         HMSelectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
@@ -148,7 +148,7 @@ static const CGFloat kImagesHeightOfTopScrollView = 54.0f;
 
 -(void)setTabSelectionIndicatorLocation:(XYYSegmentedControlSelectionIndicatorLocation)tabSelectionIndicatorLocation
 {
-    HMSegmentedControlSelectionIndicatorLocation selectionIndicatorLocation;
+    HMSegmentedControlSelectionIndicatorLocation selectionIndicatorLocation  = HMSegmentedControlSelectionIndicatorLocationNone;
     if (tabSelectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationUp)
     {
         selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationUp;
