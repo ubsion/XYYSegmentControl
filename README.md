@@ -95,12 +95,7 @@
     
 
 ## pod 使用
-~~pod 'XYYSegmentControl', '~> 0.0.1'~~
 
-~~pod 'XYYSegmentControl', '~> 1.2.0'~~
+   pod 'XYYSegmentControl', '~> 1.4.0'
 
-~~pod 'XYYSegmentControl', '~> 1.3.0'~~
 
-~~pod 'XYYSegmentControl', '~> 1.3.1'~~
-
-    pod 'XYYSegmentControl', '~> 1.3.2'
