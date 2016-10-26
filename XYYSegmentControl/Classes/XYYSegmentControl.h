@@ -1,11 +1,12 @@
 //
-//  SZSlideSwitchManager.h
+//  XYYSegmentControl
 //  xuyong
 //
 //  Created by xuyong on 15/5/14.
-//  Copyright (c) 2015年 TIXA. All rights reserved.
+//  Copyright (c) 2015年 xuyong. All rights reserved.
 //  @author XuYong, 15-05-14 09:05:01
 //  分布式控制器,主要用来多tab显示用，在HMSegmentedControl基础上再封装。欢迎使用，如果你喜欢请关注下，次项目会持续跟新。
+//  使用过程中有问题，欢迎到https://github.com/1273011249/XYYSegmentControl/issues 里面持续关注。
 
 #import <UIKit/UIKit.h>
 
