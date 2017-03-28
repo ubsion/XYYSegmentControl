@@ -1,6 +1,6 @@
 # XYYSegmentDemo（1.3.2）
 
-##多页签显示，基于HMSegmentedControl再封装
+## 多页签显示，基于HMSegmentedControl再封装
 最新demo：
 
 ![image](https://github.com/1273011249/XYYSegmentControl/blob/master/SegmentDemoTableview.gif)
@@ -13,7 +13,7 @@
 
 ![image](https://github.com/1273011249/XYYSegmentControl/blob/master/SegmentDemo_add.gif)
 
-##使用方法：
+## 使用方法：
 
     -(void)buildSegment
     {
